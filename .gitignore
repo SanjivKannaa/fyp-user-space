@@ -1,5 +1,1 @@
-./output.txt
-./venv/*
-./output.txt
-./allowed.txt
-./blocked.txt
+venv
