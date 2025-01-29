@@ -1,8 +1,8 @@
 import os
-from scapy.all import *
-from netfilterqueue import NetfilterQueue
+from scapy.all import ARP, Ether
+from netfilterqueue import NetfilterQueue, Packet
 import netifaces
-QUEUE_NUM = 69  # NFQUEUE number
+QUEUE_NUM = 1  # NFQUEUE number
 
 q = set()
 # Function to process each packet in the NFQUEUE
