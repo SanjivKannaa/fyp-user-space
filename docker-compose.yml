@@ -1,0 +1,31 @@
+version: '2'
+services:
+  arp_protector_in:
+    container_name: arp_protector_in
+    build: .
+    privileged: true
+    mac_address: "02:42:ac:11:00:02"
+    volumes:
+      - ./:/app
+    command: python3 main1.py
+    networks:
+      nfqueue_network:
+        ipv4_address: 172.28.0.2
+  arp_protector_out:
+    container_name: arp_protector_out
+    build: .
+    privileged: true
+    mac_address: "02:42:ac:11:00:03"
+    volumes:
+      - ./:/app
+    command: python3 main2.py
+    networks:
+      nfqueue_network:
+        ipv4_address: 172.28.0.3
+
+networks:
+  nfqueue_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.28.0.0/16"
